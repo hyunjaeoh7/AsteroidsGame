@@ -1,6 +1,7 @@
 Spaceship hi = new Spaceship();//declare objects and object list
 Star[] sleep = new Star[47];
 ArrayList <Asteroids> balls = new ArrayList<Asteroids>();
+ArrayList <Bullet> pew = new ArrayList<Bullet>();
 boolean wf = false;//booleans to make the moving more smooth 
 boolean sf = false;
 boolean af = false;
@@ -33,6 +34,11 @@ public void draw()
     if(balls.get(i).check() == true){
       balls.remove(i);
     }
+  }
+  
+  for(int i = 0; i < pew.size(); i++){
+    pew.get(i).show();
+    pew.get(i).move();
   }
   
   if(wf ^ sf){//if only one of the w or s keys are pressed then u accelerate
@@ -74,6 +80,7 @@ public void keyPressed(){//sets the booleans equal to true if the keys are press
   if(key == 'd'){
     df = true;
   }
+  
 }
 
 public void keyReleased(){//sets the booleans to false if they are released
@@ -92,4 +99,10 @@ public void keyReleased(){//sets the booleans to false if they are released
   if(key == 'd'){
     df = false;
   }
+}
+
+public void mousePressed(){//shooting thing
+  if(mousePressed){
+    pew.add(new Bullet(hi));
+  }  
 }
