@@ -38,8 +38,15 @@ class Asteroids extends Floater {
   }
   
   public boolean check(){
-    if(dist((float)myCenterX, (float)myCenterY, (float)hi.getX(), (float)hi.getY()) < 25){
+    if(dist((float)myCenterX, (float)myCenterY, (float)hi.getX(), (float)hi.getY()) < 30){
       return true;   
+    } else {
+      for(int i = 0; i < pew.size(); i++){
+        if(dist((float)myCenterX, (float)myCenterY, (float)pew.get(i).getX(), (float)pew.get(i).getY()) < 19){
+          pew.remove(i);
+          return true;
+        }
+      } 
     }
     return false;
   }
